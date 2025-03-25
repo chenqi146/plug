@@ -1,6 +1,11 @@
 /**app.wxss**/
 @import 'miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss';
 
+page {
+  background-color: #F5F5F5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -14,24 +19,58 @@
 .page-title {
   font-size: 36rpx;
   font-weight: bold;
-  margin-bottom: 30rpx;
-  color: #333;
+  margin-bottom: 40rpx;
+  color: #000000;
+  text-align: center;
+  position: relative;
+  padding-bottom: 16rpx;
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 4rpx;
+  background-color: #000000;
 }
 
 .form-group {
   width: 100%;
   margin-bottom: 30rpx;
   padding: 16rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .form-label {
   font-size: 28rpx;
-  color: #666;
-  margin-bottom: 10rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
 }
 
 .btn-primary {
-  background-color: #07C160;
+  background-color: #000000;
   color: white;
   margin-top: 40rpx;
+  border-radius: 16rpx;
+  font-weight: 500;
+  padding: 8rpx 0;
+  letter-spacing: 2rpx;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+button[disabled].btn-primary {
+  background-color: #CCCCCC;
+  color: #FFFFFF;
 }

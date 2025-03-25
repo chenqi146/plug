@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="page-title">插座转换</view>
+  <view class="page-title">国家插座转换</view>
   
   <view class="form-group">
     <view class="form-label">源国家（您的设备来自）</view>
@@ -21,33 +21,38 @@
   <button class="btn-primary" bindtap="checkConversion" disabled="{{!sourceCountry || !targetCountry}}">查看转换信息</button>
   
   <view class="tips" wx:if="{{sourceCountry && targetCountry}}">
-    点击按钮查看从 {{sourceCountry}} 到 {{targetCountry}} 的插座转换信息
+    点击按钮查看从 <text class="highlight">{{sourceCountry}}</text> 到 <text class="highlight">{{targetCountry}}</text> 的插座转换信息
   </view>
 </view>
 
 <!-- 搜索弹窗 -->
-<view class="search-modal" wx:if="{{showSearchModal}}">
-  <view class="search-container">
+<view class="search-modal" wx:if="{{showSearchModal}}" bindtap="hideSearchModal">
+  <view class="search-container" catchtap="stopPropagation">
     <view class="search-header">
       <view class="search-title">搜索{{searchType === 'source' ? '源' : '目标'}}国家</view>
       <view class="close-btn" bindtap="hideSearchModal">×</view>
     </view>
     
     <view class="search-input-container">
-      <input class="search-input" placeholder="输入国家名称搜索" bindinput="onSearchInput" value="{{searchKeyword}}" focus="{{showSearchModal}}" />
+      <input class="search-input" placeholder="输入国家名称或代码搜索" bindinput="onSearchInput" value="{{searchKeyword}}" focus="{{showSearchModal}}" />
       <view class="clear-icon" bindtap="clearSearch" wx:if="{{searchKeyword}}">×</view>
     </view>
     
     <scroll-view scroll-y class="country-list">
-      <view class="no-result" wx:if="{{filteredCountries.length === 0}}">没有找到匹配的国家</view>
+      <view class="no-result" wx:if="{{filteredCountries.length === 0}}">
+        <icon type="info" size="40" color="#CCCCCC"></icon>
+        <view>没有找到匹配的国家</view>
+      </view>
       <view 
         class="country-item" 
         wx:for="{{filteredCountries}}" 
         wx:key="code" 
         data-index="{{item.originalIndex}}" 
         bindtap="selectCountry"
+        hover-class="country-item-hover"
       >
-        {{item.name}}
+        <text class="country-name">{{item.name}}</text>
+        <text class="country-code">{{item.code}}</text>
       </view>
     </scroll-view>
   </view>

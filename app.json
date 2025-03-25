@@ -5,8 +5,8 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#07C160",
-    "navigationBarTitleText": "插座转换",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "国家插座转换工具",
     "navigationBarTextStyle": "white"
   },
   "style": "v2",

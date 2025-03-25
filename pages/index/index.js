@@ -72,6 +72,12 @@ Page({
     });
   },
   
+  // 阻止事件冒泡
+  stopPropagation(e) {
+    // 阻止事件冒泡，防止点击搜索容器时关闭弹窗
+    return false;
+  },
+  
   // 清除搜索框内容
   clearSearch() {
     this.setData({
