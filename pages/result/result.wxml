@@ -1,0 +1,69 @@
+<view class="container">
+  <view class="page-title">插座转换信息</view>
+  
+  <view class="countries-info">
+    <view class="country-item">
+      <view class="country-name">{{sourceData.name}}</view>
+      <view class="socket-images">
+        <block wx:for="{{sourceSocketTypes}}" wx:key="index">
+          <view class="socket-type-item">
+            <image class="socket-image" src="{{item.image}}" mode="aspectFit"></image>
+            <view class="socket-type-name">{{item.name}}({{item.standard}})</view>
+          </view>
+        </block>
+      </view>
+      <view class="socket-info">
+        <view>电压: {{sourceData.voltage}}</view>
+      </view>
+    </view>
+    
+    <view class="arrow">→</view>
+    
+    <view class="country-item">
+      <view class="country-name">{{targetData.name}}</view>
+      <view class="socket-images">
+        <block wx:for="{{targetSocketTypes}}" wx:key="index">
+          <view class="socket-type-item">
+            <image class="socket-image" src="{{item.image}}" mode="aspectFit"></image>
+            <view class="socket-type-name">{{item.name}}({{item.standard}})</view>
+          </view>
+        </block>
+      </view>
+      <view class="socket-info">
+        <view>电压: {{targetData.voltage}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="conversion-result">
+    <view class="result-title success">
+      旅行建议
+    </view>
+    
+    <view class="result-message">{{conversionInfo.message}}</view>
+    
+    <view class="common-types" wx:if="{{!conversionInfo.needAdapter && conversionInfo.commonTypes.length > 0}}">
+      <view class="common-types-title">共同支持的插座类型：</view>
+      <view class="common-types-list">
+        <block wx:for="{{commonSocketTypes}}" wx:key="index">
+          <view class="common-type-item">
+            <image class="common-type-image" src="{{item.image}}" mode="aspectFit"></image>
+            <view class="common-type-name">{{item.name}}({{item.standard}})</view>
+          </view>
+        </block>
+      </view>
+    </view>
+   
+    <view class="warning-box" wx:if="{{conversionInfo.needAdapter}}">
+      <icon type="warn" size="16"></icon>
+      <text>需要使用({{conversionInfo.targetStandard}})转换插头</text>
+    </view> 
+
+    <view class="warning-box" wx:if="{{conversionInfo.voltageWarning}}">
+      <icon type="warn" size="16"></icon>
+      <text>电压不兼容，可能需要电压转换器</text>
+    </view>
+  </view>
+  
+  <button class="btn-primary" bindtap="backToIndex">返回首页</button>
+</view> 

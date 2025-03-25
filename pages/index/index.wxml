@@ -1,0 +1,54 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="page-title">插座转换</view>
+  
+  <view class="form-group">
+    <view class="form-label">源国家（您的设备来自）</view>
+    <view class="country-select">
+      <view class="weui-select" bindtap="showSourceSearch">{{sourceCountry || '请选择源国家'}}</view>
+      <view class="search-icon" bindtap="showSourceSearch">🔍</view>
+    </view>
+  </view>
+  
+  <view class="form-group">
+    <view class="form-label">目标国家（您要去的地方）</view>
+    <view class="country-select">
+      <view class="weui-select" bindtap="showTargetSearch">{{targetCountry || '请选择目标国家'}}</view>
+      <view class="search-icon" bindtap="showTargetSearch">🔍</view>
+    </view>
+  </view>
+  
+  <button class="btn-primary" bindtap="checkConversion" disabled="{{!sourceCountry || !targetCountry}}">查看转换信息</button>
+  
+  <view class="tips" wx:if="{{sourceCountry && targetCountry}}">
+    点击按钮查看从 {{sourceCountry}} 到 {{targetCountry}} 的插座转换信息
+  </view>
+</view>
+
+<!-- 搜索弹窗 -->
+<view class="search-modal" wx:if="{{showSearchModal}}">
+  <view class="search-container">
+    <view class="search-header">
+      <view class="search-title">搜索{{searchType === 'source' ? '源' : '目标'}}国家</view>
+      <view class="close-btn" bindtap="hideSearchModal">×</view>
+    </view>
+    
+    <view class="search-input-container">
+      <input class="search-input" placeholder="输入国家名称搜索" bindinput="onSearchInput" value="{{searchKeyword}}" focus="{{showSearchModal}}" />
+      <view class="clear-icon" bindtap="clearSearch" wx:if="{{searchKeyword}}">×</view>
+    </view>
+    
+    <scroll-view scroll-y class="country-list">
+      <view class="no-result" wx:if="{{filteredCountries.length === 0}}">没有找到匹配的国家</view>
+      <view 
+        class="country-item" 
+        wx:for="{{filteredCountries}}" 
+        wx:key="code" 
+        data-index="{{item.originalIndex}}" 
+        bindtap="selectCountry"
+      >
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+</view>

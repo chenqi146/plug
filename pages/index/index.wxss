@@ -1,0 +1,140 @@
+.weui-select {
+  padding-left: 16rpx;
+  border: 1px solid #ddd;
+  border-radius: 8rpx;
+  background-color: #f9f9f9;
+  position: relative;
+  flex: 1;
+}
+
+.weui-select::after {
+  content: " ";
+  display: inline-block;
+  height: 12rpx;
+  width: 12rpx;
+  border-width: 0 2rpx 2rpx 0;
+  border-color: #C8C8CD;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 20rpx;
+  margin-top: -8rpx;
+}
+
+.tips {
+  margin-top: 40rpx;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}
+
+.country-select {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  margin-left: 16rpx;
+  font-size: 40rpx;
+  color: #07C160;
+}
+
+/* 搜索弹窗样式 */
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container {
+  width: 80%;
+  max-height: 80%;
+  background-color: #fff;
+  border-radius: 12rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 24rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.search-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  color: #999;
+  padding: 0 10rpx;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  border-bottom: 1rpx solid #eee;
+  position: relative;
+}
+
+.search-input {
+  flex: 1;
+  height: 64rpx;
+  background-color: #f5f5f5;
+  border-radius: 32rpx;
+  padding: 0 60rpx 0 24rpx;
+  font-size: 28rpx;
+}
+
+.clear-icon {
+  position: absolute;
+  right: 36rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28rpx;
+  color: #999;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-list {
+  flex: 1;
+  max-height: 700rpx;
+}
+
+.country-item {
+  padding: 24rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.country-item:active {
+  background-color: #f9f9f9;
+}
+
+.no-result {
+  padding: 40rpx 24rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+}
